@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { FlatList } from "react-native";
+import styled from "styled-components/native";
 import Card from "./components/Card";
 import images from "./assets/images";
 import Header from "./components/Header";
@@ -9,7 +10,7 @@ import Constants from "expo-constants";
 
 export default function App() {
     return (
-        <View style={styles.container}>
+        <Container>
             <StatusBar style="auto" backgroundColor="#ADD8E6" />
             <Header />
             <FlatList
@@ -20,16 +21,18 @@ export default function App() {
                 decelerationRate={"fast"}
             />
             <Footer />
-        </View>
+        </Container>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        marginTop: Constants.statusBarHeight,
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-});
+const Container = styled.View`
+    margin-top: ${(props) => props.marginTop}px;
+    flex: 1;
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+`;
+
+Container.defaultProps = {
+    marginTop: Constants.statusBarHeight,
+};

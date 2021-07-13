@@ -1,26 +1,25 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import styled from "styled-components/native";
 
 const Header = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Header</Text>
-        </View>
+        <Container>
+            <Text>Header</Text>
+        </Container>
     );
 };
 
 export default Header;
 
-const styles = StyleSheet.create({
-    container: {
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-        height: 50,
-        backgroundColor: "teal",
-    },
-    text: {
-        fontWeight: "bold",
-        fontSize: 20,
-    },
-});
+const Container = styled.View`
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background-color: teal;
+`;
+
+const Text = styled.Text`
+    font-weight: bold;
+    font-size: 20px;
+`;

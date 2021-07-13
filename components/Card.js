@@ -1,54 +1,60 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions, ImageBackground } from "react-native";
+import { Dimensions } from "react-native";
+import styled from "styled-components/native";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 import Constants from "expo-constants";
 
 const Card = ({ item }) => {
-    const image = item?.image;
-    const title = item?.title;
-    const description = item?.description;
     return (
-        <View style={{ flex: 1 }}>
-            <ImageBackground source={image} style={styles.container} resizeMode="cover">
+        <Container>
+            <ImageBackground source={item.image} resizeMode="cover">
                 {/* Name */}
-                <View style={styles.nameContainer}>
-                    <Text style={styles.heading}>Name: </Text>
-                    <Text style={styles.text}>{title}</Text>
-                </View>
+                <NameContainer>
+                    <HeadingText>Name: </HeadingText>
+                    <Text>{item.title}</Text>
+                </NameContainer>
                 {/* Description */}
-                <View style={styles.descriptionContainer}>
-                    <Text style={styles.heading}>Description: </Text>
-                    <Text style={styles.text}>{description}</Text>
-                </View>
+                <DescriptionContainer>
+                    <HeadingText>Description: </HeadingText>
+                    <Text>{item.description}</Text>
+                </DescriptionContainer>
             </ImageBackground>
-        </View>
+        </Container>
     );
 };
 
 export default Card;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        width: windowWidth,
-        height: windowHeight - Constants.statusBarHeight - 75,
-    },
-    nameContainer: {
-        flexDirection: "row",
-        margin: 20,
-    },
-    descriptionContainer: {
-        flex: 1,
-        flexDirection: "row",
-        alignItems: "flex-end",
-        margin: 20,
-    },
-    heading: {
-        color: "grey",
-        fontWeight: "bold",
-    },
-    text: {
-        color: "white",
-    },
-});
+const Container = styled.View``;
+
+const ImageBackground = styled.ImageBackground`
+    width: ${(props) => props.width}px;
+    height: ${(props) => props.height}px;
+`;
+
+ImageBackground.defaultProps = {
+    height: windowHeight - Constants.statusBarHeight - 75,
+    width: windowWidth,
+};
+
+const NameContainer = styled.View`
+    flex-direction: row;
+    margin: 20px;
+`;
+
+const DescriptionContainer = styled.View`
+    flex: 1;
+    flex-direction: row;
+    align-items: flex-end;
+    margin: 20px;
+`;
+
+const HeadingText = styled.Text`
+    color: grey;
+    font-weight: bold;
+`;
+
+const Text = styled.Text`
+    color: white;
+`;

@@ -1,26 +1,25 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import styled from "styled-components/native";
 
 const Footer = () => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Footer</Text>
-        </View>
+        <Container>
+            <Text>Footer</Text>
+        </Container>
     );
 };
 
-export default Footer;
+const Container = styled.View`
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background-color: red;
+`;
 
-const styles = StyleSheet.create({
-    container: {
-        alignItems: "center",
-        justifyContent: "center",
-        width: "100%",
-        height: 50,
-        backgroundColor: "red",
-    },
-    text: {
-        fontWeight: "bold",
-        fontSize: 20,
-    },
-});
+const Text = styled.Text`
+    font-weight: bold;
+    font-size: 20px;
+`;
+
+export default Footer;
