@@ -2,10 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { FlatList } from "react-native";
 import styled from "styled-components/native";
-import Card from "./components/Card";
 import images from "./assets/images";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { Card, Header, Footer } from "./components";
 import Constants from "expo-constants";
 
 export default function App() {
